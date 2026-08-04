@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>퍼포먼스 마케터 포트폴리오</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--acc:#E94560;--purp:#A259FF;--teal:#00C9A7;--gold:#F5A623;
+--muted:#6B7280;--r:14px;
+--font:'Inter','Apple SD Gothic Neo',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);color:#E5E7EB;overflow-x:hidden}
+
+/* ── 공통 ── */
+.tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--acc);margin-bottom:10px}
+.sw{max-width:1080px;margin:0 auto;padding:96px 48px}
+.stitle{font-size:38px;font-weight:900;line-height:1.15;margin-bottom:10px}
+.sdesc{font-size:16px;color:var(--muted);line-height:1.7;margin-bottom:52px}
+.ph{background:rgba(255,255,255,.06);border:1px dashed rgba(255,255,255,.12);border-radius:var(--r);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.25);font-size:13px}
+img{display:block;width:100%;height:100%;object-fit:cover;border-radius:var(--r)}
+
+/* ── NAV ── #0D0D0D ── */
+#nav-global{position:sticky;top:0;z-index:200;background:#0D0D0D;border-bottom:1px solid rgba(255,255,255,.06);height:62px;display:flex;align-items:center;justify-content:space-between;padding:0 48px}
+.nav-logo{font-size:18px;font-weight:900;color:#fff;letter-spacing:-0.5px}
+.nav-logo span{color:var(--acc)}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{font-size:13px;font-weight:600;color:var(--muted);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:#fff}
+.nav-cta{padding:8px 20px;background:var(--acc);color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;font-family:var(--font)}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.hamburger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:all .3s}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{display:none;position:fixed;top:62px;left:0;right:0;background:#0D0D0D;border-bottom:1px solid rgba(255,255,255,.08);z-index:199;padding:16px 24px;flex-direction:column;gap:4px}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-size:15px;font-weight:600;color:var(--muted);text-decoration:none;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.05)}
+.mobile-menu a:last-child{border-bottom:none}
+
+/* ── HERO ── #0F0F1A ── */
+#section-hero{background:#0F0F1A;background-image:linear-gradient(rgba(233,69,96,.04)1px,transparent 1px),linear-gradient(90deg,rgba(233,69,96,.04)1px,transparent 1px);background-size:48px 48px;min-height:92vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;padding:80px 48px;text-align:center;position:relative}
+#section-hero::before{content:'';position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(233,69,96,.14)0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
+.hero-avatar{width:96px;height:96px;border-radius:50%;background:#2a1f3d;border:2px solid rgba(233,69,96,.5);overflow:hidden;position:relative;z-index:1;flex-shrink:0}
+.hero-chips{display:flex;gap:8px;position:relative;z-index:1;flex-wrap:wrap;justify-content:center}
+.chip{font-size:11px;font-weight:700;padding:5px 13px;border-radius:999px;letter-spacing:.5px}
+.chip-r{background:rgba(233,69,96,.15);color:#E94560;border:1px solid rgba(233,69,96,.3)}
+.chip-p{background:rgba(162,89,255,.15);color:#A259FF;border:1px solid rgba(162,89,255,.3)}
+.hero-hl{font-size:56px;font-weight:900;line-height:1.1;position:relative;z-index:1}
+.hero-hl em{font-style:normal;color:var(--acc)}
+.hero-sub{font-size:17px;color:var(--muted);max-width:480px;line-height:1.75;position:relative;z-index:1}
+.hero-btns{display:flex;gap:12px;position:relative;z-index:1;flex-wrap:wrap;justify-content:center}
+.btn-solid{padding:14px 30px;background:var(--acc);color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;text-decoration:none;font-family:var(--font)}
+.btn-ghost{padding:14px 30px;background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.25);border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;text-decoration:none;font-family:var(--font)}
+.hero-scroll{position:absolute;bottom:32px;font-size:11px;color:var(--muted);letter-spacing:3px;text-transform:uppercase;z-index:1;animation:bounce 2s infinite}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+.typing-cursor{display:inline-block;width:3px;height:.9em;background:var(--acc);margin-left:2px;animation:blink .75s step-end infinite;vertical-align:-.05em}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+
+/* ── IMPACT ── #13131F ── */
+#section-impact{background:#13131F;border-top:1px solid rgba(233,69,96,.15);border-bottom:1px solid rgba(233,69,96,.15)}
+.impact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.impact-card{background:rgba(233,69,96,.06);border:1px solid rgba(233,69,96,.12);border-radius:var(--r);padding:44px 28px;text-align:center;transition:background .2s,transform .2s;cursor:pointer;text-decoration:none;display:block}
+.impact-card:hover{background:rgba(233,69,96,.11);transform:translateY(-3px)}
+.impact-num{font-size:52px;font-weight:900;background:linear-gradient(135deg,#E94560,#FF8C69);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;transition:all .3s}
+.impact-lbl{font-size:15px;font-weight:700;color:#E5E7EB;margin-top:8px}
+.impact-sub{font-size:13px;color:var(--muted);margin-top:6px;line-height:1.5}
+
+/* ── ABOUT ── #1A1033 ── */
+#section-about{background:#1A1033}
+.about-layout{display:grid;grid-template-columns:1fr 1.3fr;gap:72px;align-items:start}
+.about-img{height:380px;border-radius:var(--r);overflow:hidden}
+.about-body{display:flex;flex-direction:column;gap:24px}
+.about-name{font-size:36px;font-weight:900;line-height:1.2}
+.about-name em{font-style:normal;color:var(--purp)}
+.about-txt{font-size:15px;color:var(--muted);line-height:1.85}
+.timeline{display:flex;flex-direction:column}
+.tl-item{display:flex;gap:16px;position:relative}
+.tl-item:not(:last-child)::before{content:'';position:absolute;left:15px;top:34px;width:2px;height:calc(100% + 2px);background:linear-gradient(to bottom,var(--purp),transparent)}
+.tl-dot{width:32px;height:32px;border-radius:50%;flex-shrink:0;background:var(--purp);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;z-index:1}
+.tl-body{padding-bottom:24px}
+.tl-year{font-size:11px;font-weight:700;color:var(--purp);letter-spacing:1px}
+.tl-role{font-size:15px;font-weight:700;margin-top:2px;color:#E5E7EB}
+.tl-desc{font-size:13px;color:var(--muted);margin-top:4px;line-height:1.55}
+.btn-dl{display:inline-block;width:fit-content;padding:13px 26px;background:transparent;border:1.5px solid var(--purp);border-radius:10px;font-size:14px;font-weight:700;color:var(--purp);cursor:pointer;text-decoration:none;font-family:var(--font)}
+
+/* ── PROJECTS ── #0D1117 ── */
+#section-projects{background:#0D1117}
+.ftabs{display:flex;gap:8px;margin-bottom:44px;flex-wrap:wrap}
+.ftab{padding:8px 18px;border-radius:999px;border:1.5px solid rgba(255,255,255,.12);font-size:13px;font-weight:600;color:var(--muted);cursor:pointer;background:transparent;transition:all .2s;font-family:var(--font)}
+.ftab.on,.ftab:hover{background:var(--acc);border-color:var(--acc);color:#fff}
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.pcard{background:#161B22;border:1px solid rgba(255,255,255,.08);border-radius:var(--r);overflow:hidden;transition:transform .25s,border-color .25s;cursor:pointer}
+.pcard:hover{transform:translateY(-5px);border-color:rgba(233,69,96,.4)}
+.pcard.hidden{display:none}
+.pthumb{height:176px;overflow:hidden}
+.pinfo{padding:20px}
+.pbadge{display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:999px;margin-bottom:10px}
+.pb-r{background:rgba(233,69,96,.15);color:#E94560}
+.pb-p{background:rgba(162,89,255,.15);color:#A259FF}
+.pb-t{background:rgba(0,201,167,.15);color:#00C9A7}
+.pname{font-size:16px;font-weight:700;margin-bottom:6px;color:#E5E7EB}
+.psumm{font-size:13px;color:var(--muted);line-height:1.55}
+.pkpis{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.kpi{font-size:12px;font-weight:700;padding:4px 10px;border-radius:6px;background:rgba(255,255,255,.06);color:rgba(255,255,255,.7)}
+
+/* ── MODAL ── */
+.modal-overlay{display:none;position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.8);align-items:center;justify-content:center;padding:20px}
+.modal-overlay.open{display:flex}
+.modal-box{background:#161B22;border:1px solid rgba(255,255,255,.1);width:min(860px,100%);max-height:90vh;overflow-y:auto;border-radius:20px;padding:40px;position:relative}
+.modal-close{position:absolute;top:20px;right:20px;background:rgba(255,255,255,.08);border:none;color:#E5E7EB;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:20px;display:flex;align-items:center;justify-content:center;font-family:var(--font)}
+.modal-close:hover{background:rgba(255,255,255,.15)}
+.modal-title{font-size:24px;font-weight:900;margin-bottom:6px;color:#E5E7EB}
+.modal-cat{font-size:12px;font-weight:700;color:var(--acc);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:24px}
+.mtabs{display:flex;gap:8px;margin-bottom:32px;flex-wrap:wrap}
+.mtab{padding:8px 18px;border-radius:999px;border:1.5px solid rgba(255,255,255,.12);font-size:13px;font-weight:600;color:var(--muted);cursor:pointer;background:transparent;transition:all .2s;font-family:var(--font)}
+.mtab.on{background:var(--acc);border-color:var(--acc);color:#fff}
+.mpanel{display:none}
+.mpanel.on{display:block}
+.mpanel-title{font-size:13px;font-weight:700;color:var(--acc);letter-spacing:1px;text-transform:uppercase;margin-bottom:12px}
+.mpanel-txt{font-size:15px;color:rgba(255,255,255,.75);line-height:1.75}
+.chart-wrap{margin-top:28px;display:flex;gap:16px;align-items:flex-end;height:140px}
+.bar-group{display:flex;flex-direction:column;align-items:center;gap:8px;flex:1}
+.bar-lbl{font-size:12px;color:var(--muted)}
+.bar-val{font-size:13px;font-weight:700;color:#E5E7EB}
+.bar{width:100%;border-radius:6px 6px 0 0;transition:height .6s ease;min-height:4px}
+.bar-before{background:rgba(255,255,255,.15)}
+.bar-after{background:linear-gradient(180deg,#E94560,#FF8C69)}
+.modal-testimonial{margin-top:32px;padding:24px;background:rgba(255,255,255,.04);border-radius:12px;border-left:3px solid var(--gold)}
+.modal-testimonial .tq{font-size:15px;color:rgba(255,255,255,.75);line-height:1.7;margin-bottom:16px}
+.modal-testimonial .ta{font-size:13px;color:var(--gold);font-weight:700}
+
+/* ── SKILLS ── #0E1A2B ── */
+#section-skills{background:#0E1A2B}
+.skills-list{display:flex;flex-direction:column;gap:32px;max-width:680px}
+.skill-row{display:flex;flex-direction:column;gap:10px}
+.skill-hd{display:flex;justify-content:space-between;align-items:center}
+.skill-name-t{font-size:15px;font-weight:700;color:#E5E7EB}
+.skill-pct-t{font-size:14px;font-weight:700;color:var(--teal)}
+.skill-track{height:8px;background:rgba(255,255,255,.08);border-radius:999px;overflow:hidden}
+.skill-fill{height:8px;border-radius:999px;background:linear-gradient(90deg,#00C9A7,#00E5C5);width:0%;transition:width 1.2s ease}
+.tools-cloud{display:flex;flex-wrap:wrap;gap:10px;margin-top:48px}
+.ttag{padding:7px 16px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:8px;font-size:13px;font-weight:600;color:rgba(255,255,255,.65)}
+
+/* ── TESTIMONIALS ── #1C1008 ── */
+#section-testimonials{background:#1C1008}
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.tcard{background:rgba(245,166,35,.06);border:1px solid rgba(245,166,35,.15);border-radius:var(--r);padding:28px}
+.tquote{font-size:15px;color:rgba(255,255,255,.75);line-height:1.75;margin-bottom:24px;padding-left:16px;border-left:3px solid var(--gold);border-radius:0}
+.tauthor{display:flex;align-items:center;gap:12px}
+.tavatar{width:40px;height:40px;border-radius:50%;background:#3d2a08;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:var(--gold)}
+.tname{font-size:14px;font-weight:700;color:var(--gold)}
+.trole{font-size:12px;color:var(--muted)}
+
+/* ── CONTACT ── #061A10 ── */
+#section-contact{background:#061A10}
+.contact-layout{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
+.cbtns{display:flex;flex-direction:column;gap:12px;margin-top:36px}
+.cbtn{padding:16px 24px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;border:none;text-align:left;font-family:var(--font);transition:opacity .2s,transform .15s}
+.cbtn:hover{opacity:.88;transform:translateX(2px)}
+.cbtn-s{background:var(--teal);color:#000}
+.cbtn-o{background:transparent;color:rgba(255,255,255,.8);border:1.5px solid rgba(0,201,167,.35)}
+.socials{display:flex;gap:12px;margin-top:28px}
+.slink{width:44px;height:44px;border-radius:10px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:18px;color:rgba(255,255,255,.6);transition:background .2s,color .2s;font-style:normal}
+.slink:hover{background:rgba(255,255,255,.12);color:#fff}
+.calendly-box{height:120px;border-radius:var(--r);background:rgba(0,201,167,.06);border:1px solid rgba(0,201,167,.2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px}
+.calendly-box p{font-size:14px;color:var(--muted)}
+.cal-btn{padding:12px 24px;background:var(--teal);color:#000;border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;font-family:var(--font)}
+
+/* toast */
+#toast{position:fixed;bottom:32px;left:50%;transform:translateX(-50%) translateY(20px);background:#1e1e1e;color:#E5E7EB;padding:12px 24px;border-radius:10px;font-size:14px;font-weight:600;opacity:0;transition:all .3s;z-index:500;border:1px solid rgba(255,255,255,.1);pointer-events:none}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ── FOOTER ── #080808 ── */
+#footer-global{background:#080808;border-top:1px solid rgba(255,255,255,.06);height:72px;display:flex;align-items:center;justify-content:center}
+#footer-global p{color:var(--muted);font-size:13px}
+#footer-global span{color:var(--acc);font-weight:700}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+.sw{padding:72px 24px}
+.stitle{font-size:28px}
+.hero-hl{font-size:36px}
+.hero-sub{font-size:15px}
+.impact-grid{grid-template-columns:1fr}
+.about-layout{grid-template-columns:1fr}
+.about-img{height:240px}
+.pgrid{grid-template-columns:1fr}
+.tgrid{grid-template-columns:1fr}
+.contact-layout{grid-template-columns:1fr}
+.nav-links,.nav-cta{display:none}
+.hamburger{display:flex}
+#nav-global{padding:0 24px}
+}
+@media(max-width:480px){
+.sw{padding:56px 20px}
+.stitle{font-size:24px}
+.hero-hl{font-size:30px}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav id="nav-global">
+<span class="nav-logo">PM<span>.</span></span>
+<ul class="nav-links">
+<li><a href="#section-impact">성과</a></li>
+<li><a href="#section-about">소개</a></li>
+<li><a href="#section-projects">프로젝트</a></li>
+<li><a href="#section-skills">스킬</a></li>
+<li><a href="#section-contact">연락</a></li>
+</ul>
+<button class="nav-cta" onclick="openCalendly()">미팅 잡기</button>
+<button class="hamburger" id="ham" aria-label="메뉴 열기">
+<span></span><span></span><span></span>
+</button>
+</nav>
+<nav class="mobile-menu" id="mobile-menu">
+<a href="#section-impact" onclick="closeMobile()">성과</a>
+<a href="#section-about" onclick="closeMobile()">소개</a>
+<a href="#section-projects" onclick="closeMobile()">프로젝트</a>
+<a href="#section-skills" onclick="closeMobile()">스킬</a>
+<a href="#section-contact" onclick="closeMobile()">연락</a>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section id="section-hero">
+<div class="hero-avatar ph">사진</div>
+<div class="hero-chips">
+<span class="chip chip-r">퍼포먼스 마케팅</span>
+<span class="chip chip-p">콘텐츠 마케팅</span>
+</div>
+<h1 class="hero-hl"><span id="typing-text"></span><span class="typing-cursor"></span></h1>
+<p class="hero-sub">광고비 대비 ROAS 200% · 연 8억 매출 기여.<br>퍼포먼스부터 콘텐츠까지 데이터로 실행합니다.</p>
+<div class="hero-btns">
+<a href="#section-projects" class="btn-solid">프로젝트 보기</a>
+<a href="resume.pdf" download="마케터_이력서.pdf" class="btn-ghost">이력서 다운로드</a>
+</div>
+<span class="hero-scroll">↓ scroll</span>
+</section>
+
+<!-- ══ IMPACT ══ -->
+<section id="section-impact">
+<div class="sw">
+<span class="tag">Impact</span>
+<h2 class="stitle">숫자로 말합니다</h2>
+<p class="sdesc">3년간 쌓아 온 정량적 성과입니다.</p>
+<div class="impact-grid">
+<a class="impact-card" href="#section-projects" data-filter="퍼포먼스 마케팅">
+<div class="impact-num" data-target="200" data-suffix="%">0%</div>
+<div class="impact-lbl">ROAS</div>
+<div class="impact-sub">월 광고비 1,000만원 기준<br>이커머스 캠페인</div>
+</a>
+<a class="impact-card" href="#section-projects" data-filter="전체">
+<div class="impact-num" data-target="25" data-suffix="개">0개</div>
+<div class="impact-lbl">캠페인 운영</div>
+<div class="impact-sub">퍼포먼스 · 콘텐츠 통합<br>3년 누적</div>
+</a>
+<a class="impact-card" href="#section-projects" data-filter="전체">
+<div class="impact-num" data-target="8" data-prefix="₩" data-suffix="억">₩0억</div>
+<div class="impact-lbl">연간 매출 기여</div>
+<div class="impact-sub">직접 기여 캠페인 기준<br>2025년 연간</div>
+</a>
+</div>
+</div>
+</section>
+
+<!-- ══ ABOUT ══ -->
+<section id="section-about">
+<div class="sw">
+<div class="about-layout">
+<div class="about-img ph">프로필 이미지</div>
+<div class="about-body">
+<span class="tag">About</span>
+<h2 class="about-name">안녕하세요,<br>저는 <em>○○○</em>입니다.</h2>
+<p class="about-txt">퍼포먼스 마케팅과 콘텐츠 마케팅을 함께 다루는 3년차 마케터입니다. 광고 집행부터 SNS 채널 성장, 블로그 SEO까지 직접 실행하며 데이터 기반으로 결과를 만들어 왔습니다.</p>
+<div class="timeline">
+<div class="tl-item">
+<div class="tl-dot">23</div>
+<div class="tl-body">
+<div class="tl-year">2023</div>
+<div class="tl-role">주니어 마케터</div>
+<div class="tl-desc">퍼포먼스 캠페인 보조 운영 · 콘텐츠 제작 보조</div>
+</div>
+</div>
+<div class="tl-item">
+<div class="tl-dot">24</div>
+<div class="tl-body">
+<div class="tl-year">2024</div>
+<div class="tl-role">퍼포먼스 마케터</div>
+<div class="tl-desc">이커머스 ROAS 200% 달성 · 25개 캠페인 단독 운영</div>
+</div>
+</div>
+<div class="tl-item">
+<div class="tl-dot">25</div>
+<div class="tl-body">
+<div class="tl-year">2025</div>
+<div class="tl-role">마케팅 매니저 · 자문</div>
+<div class="tl-desc">연 8억 매출 기여 · 스타트업·로컬 브랜드 마케팅 자문</div>
+</div>
+</div>
+</div>
+<a href="resume.pdf" download="마케터_이력서.pdf" class="btn-dl">이력서 다운로드</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ══ PROJECTS ══ -->
+<section id="section-projects">
+<div class="sw">
+<span class="tag">Projects</span>
+<h2 class="stitle">케이스 스터디</h2>
+<p class="sdesc">문제 정의부터 결과까지, 3개의 대표 프로젝트를 담았습니다.</p>
+<div class="ftabs" id="ftabs">
+<button class="ftab on" data-f="전체">전체</button>
+<button class="ftab" data-f="퍼포먼스 마케팅">퍼포먼스 마케팅</button>
+<button class="ftab" data-f="콘텐츠 마케팅">콘텐츠 마케팅</button>
+<button class="ftab" data-f="SNS 성장">SNS 성장</button>
+</div>
+<div class="pgrid" id="pgrid">
+<div class="pcard" data-cat="퍼포먼스 마케팅" data-idx="0">
+<div class="pthumb ph">이커머스 썸네일</div>
+<div class="pinfo">
+<span class="pbadge pb-r">퍼포먼스 마케팅</span>
+<div class="pname">이커머스 ROAS 200% 달성</div>
+<div class="psumm">월 광고비 1,000만원으로 ROAS 200%를 달성한 퍼포먼스 캠페인 최적화 케이스</div>
+<div class="pkpis"><span class="kpi">ROAS 200%</span><span class="kpi">광고비 1,000만원</span></div>
+</div>
+</div>
+<div class="pcard" data-cat="SNS 성장" data-idx="1">
+<div class="pthumb ph">스타트업 SNS 썸네일</div>
+<div class="pinfo">
+<span class="pbadge pb-p">SNS 성장</span>
+<div class="pname">스타트업 인스타그램 4배 성장</div>
+<div class="psumm">6개월 만에 팔로워 2,000 → 8,000명으로 성장시킨 콘텐츠 전략 케이스</div>
+<div class="pkpis"><span class="kpi">팔로워 +6,000</span><span class="kpi">6개월</span></div>
+</div>
+</div>
+<div class="pcard" data-cat="콘텐츠 마케팅" data-idx="2">
+<div class="pthumb ph">로컬 브랜드 썸네일</div>
+<div class="pinfo">
+<span class="pbadge pb-t">콘텐츠 마케팅</span>
+<div class="pname">로컬 브랜드 블로그 6배 성장</div>
+<div class="psumm">4개월간 블로그 방문자를 500 → 3,000명으로 끌어올린 SEO·콘텐츠 케이스</div>
+<div class="pkpis"><span class="kpi">방문자 +2,500</span><span class="kpi">4개월</span></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ══ PROJECT DETAIL MODAL ══ -->
+<div class="modal-overlay" id="modal">
+<div class="modal-box">
+<button class="modal-close" id="modal-close">✕</button>
+<div class="modal-cat" id="m-cat"></div>
+<div class="modal-title" id="m-title"></div>
+<div class="mtabs" id="mtabs">
+<button class="mtab on" data-t="challenge">Challenge</button>
+<button class="mtab" data-t="strategy">Strategy</button>
+<button class="mtab" data-t="execution">Execution</button>
+<button class="mtab" data-t="result">Result</button>
+</div>
+<div id="m-content"></div>
+<div class="modal-testimonial" id="m-testimonial">
+<div class="tq" id="m-tq"></div>
+<div class="ta" id="m-ta"></div>
+</div>
+</div>
+</div>
+
+<!-- ══ SKILLS ══ -->
+<section id="section-skills">
+<div class="sw">
+<span class="tag">Skills</span>
+<h2 class="stitle">핵심 역량</h2>
+<p class="sdesc">실전에서 검증된 3가지 핵심 스킬과 주요 도구입니다.</p>
+<div class="skills-list">
+<div class="skill-row">
+<div class="skill-hd"><span class="skill-name-t">퍼포먼스 마케팅</span><span class="skill-pct-t" id="sp0">0%</span></div>
+<div class="skill-track"><div class="skill-fill" id="sf0" data-w="75"></div></div>
+</div>
+<div class="skill-row">
+<div class="skill-hd"><span class="skill-name-t">콘텐츠 마케팅</span><span class="skill-pct-t" id="sp1">0%</span></div>
+<div class="skill-track"><div class="skill-fill" id="sf1" data-w="70"></div></div>
+</div>
+<div class="skill-row">
+<div class="skill-hd"><span class="skill-name-t">데이터 분석 (GA4)</span><span class="skill-pct-t" id="sp2">0%</span></div>
+<div class="skill-track"><div class="skill-fill" id="sf2" data-w="65"></div></div>
+</div>
+</div>
+<div class="tools-cloud">
+<span class="ttag">Google Ads</span><span class="ttag">Meta Ads</span>
+<span class="ttag">Kakao Ads</span><span class="ttag">Naver 검색광고</span>
+<span class="ttag">GA4</span><span class="ttag">Instagram</span>
+<span class="ttag">네이버 블로그 SEO</span><span class="ttag">Notion</span>
+<span class="ttag">Canva</span>
+</div>
+</div>
+</section>
+
+<!-- ══ TESTIMONIALS ══ -->
+<section id="section-testimonials">
+<div class="sw">
+<span class="tag">Testimonials</span>
+<h2 class="stitle">함께 일한 분들의 이야기</h2>
+<p class="sdesc">이커머스 · 스타트업 · 로컬 브랜드 클라이언트의 말씀입니다.</p>
+<div class="tgrid">
+<div class="tcard">
+<p class="tquote">"광고 집행 후 매출이 눈에 띄게 올랐습니다. 데이터 기반으로 빠르게 최적화해 주셔서 신뢰가 갔습니다."</p>
+<div class="tauthor"><div class="tavatar">이A</div><div><div class="tname">이커머스 클라이언트 A</div><div class="trole">○○몰 대표</div></div></div>
+</div>
+<div class="tcard">
+<p class="tquote">"인스타 팔로워가 6개월 만에 4배가 됐어요. 콘텐츠 방향성을 잡아 주신 덕분입니다."</p>
+<div class="tauthor"><div class="tavatar">스B</div><div><div class="tname">스타트업 클라이언트 B</div><div class="trole">○○스타트업 대표</div></div></div>
+</div>
+<div class="tcard">
+<p class="tquote">"블로그 방문자가 4개월 만에 6배가 됐습니다. 실행력과 결과 모두 만족스러웠습니다."</p>
+<div class="tauthor"><div class="tavatar">로C</div><div><div class="tname">로컬 브랜드 클라이언트 C</div><div class="trole">○○브랜드 운영자</div></div></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ══ CONTACT ══ -->
+<section id="section-contact">
+<div class="sw">
+<div class="contact-layout">
+<div>
+<span class="tag">Contact</span>
+<h2 class="stitle">함께 일해요</h2>
+<p class="sdesc">캠페인 운영, 콘텐츠 전략, 마케팅 자문 문의 환영합니다.</p>
+<div class="cbtns">
+<button class="cbtn cbtn-s" onclick="copyEmail()">📋 이메일 복사하기</button>
+<button class="cbtn cbtn-o" onclick="openCalendly()">📅 30분 미팅 예약하기</button>
+<a href="resume.pdf" download="마케터_이력서.pdf" class="cbtn cbtn-o" style="display:block;text-decoration:none">📄 이력서 다운로드</a>
+</div>
+<div class="socials">
+<a class="slink" href="https://linkedin.com" target="_blank" rel="noopener" title="LinkedIn">in</a>
+<a class="slink" href="https://instagram.com" target="_blank" rel="noopener" title="Instagram">ig</a>
+<a class="slink" href="https://blog.naver.com" target="_blank" rel="noopener" title="Blog">bl</a>
+</div>
+</div>
+<div class="calendly-box">
+<p>30분 무료 커피챗 예약</p>
+<button class="cal-btn" onclick="openCalendly()">Calendly에서 예약하기</button>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer id="footer-global">
+<p>© 2026 ○○○ · 퍼포먼스 &amp; 콘텐츠 마케터 — Made with <span>♥</span></p>
+</footer>
+
+<div id="toast"></div>
+
+<script>
+/* ── 유틸 ── */
+const $ = id => document.getElementById(id);
+const EMAIL = 'yourname@email.com';
+const CALENDLY_URL = 'https://calendly.com/yourname';
+
+function showToast(msg){
+const t=$('toast'); t.textContent=msg; t.classList.add('show');
+setTimeout(()=>t.classList.remove('show'),2500);
+}
+function copyEmail(){
+navigator.clipboard.writeText(EMAIL).then(()=>showToast('이메일이 복사됐습니다: '+EMAIL));
+}
+function openCalendly(){
+window.open(CALENDLY_URL,'_blank','noopener');
+}
+
+/* ── 햄버거 메뉴 ── */
+const ham=$('ham'), mm=$('mobile-menu');
+ham.addEventListener('click',()=>{
+ham.classList.toggle('open');
+mm.classList.toggle('open');
+});
+function closeMobile(){ ham.classList.remove('open'); mm.classList.remove('open'); }
+
+/* ── 타이핑 애니메이션 ── */
+const LINES=['성과로 증명하는\n3년차 마케터','데이터로 실행하는\n퍼포먼스 마케터','콘텐츠로 채우는\n그로스 마케터'];
+let li=0,ci=0,deleting=false;
+const el=$('typing-text');
+function type(){
+const cur=LINES[li].replace('\n','<br>');
+const plain=LINES[li];
+if(!deleting){
+ci++;
+const raw=plain.slice(0,ci);
+el.innerHTML=raw.replace('\n','<br>');
+if(ci===plain.length){ deleting=true; setTimeout(type,2200); return; }
+setTimeout(type,80);
+} else {
+ci--;
+const raw=plain.slice(0,ci);
+el.innerHTML=raw.replace('\n','<br>');
+if(ci===0){ deleting=false; li=(li+1)%LINES.length; setTimeout(type,400); return; }
+setTimeout(type,40);
+}
+}
+type();
+
+/* ── 카운트업 (Intersection Observer) ── */
+const counters=document.querySelectorAll('.impact-num[data-target]');
+const cObs=new IntersectionObserver(entries=>{
+entries.forEach(e=>{
+if(!e.isIntersecting) return;
+const el=e.target;
+const target=+el.dataset.target;
+const pre=el.dataset.prefix||'';
+const suf=el.dataset.suffix||'';
+let start=0, dur=1400, step=16;
+const inc=target/(dur/step);
+const timer=setInterval(()=>{
+start+=inc;
+if(start>=target){ start=target; clearInterval(timer); }
+el.textContent=pre+Math.round(start)+suf;
+},step);
+cObs.unobserve(el);
+});
+},{threshold:.3});
+counters.forEach(c=>cObs.observe(c));
+
+/* ── 임팩트 카드 → 프로젝트 필터 연동 ── */
+document.querySelectorAll('.impact-card[data-filter]').forEach(card=>{
+card.addEventListener('click',e=>{
+e.preventDefault();
+const f=card.dataset.filter;
+document.querySelector(`#section-projects`).scrollIntoView({behavior:'smooth'});
+setTimeout(()=>applyFilter(f),500);
+});
+});
+
+/* ── 프로젝트 필터 탭 ── */
+function applyFilter(f){
+document.querySelectorAll('.ftab').forEach(t=>t.classList.toggle('on',t.dataset.f===f));
+document.querySelectorAll('.pcard').forEach(c=>{
+c.classList.toggle('hidden',f!=='전체'&&c.dataset.cat!==f);
+});
+}
+$('ftabs').addEventListener('click',e=>{
+if(!e.target.matches('.ftab')) return;
+applyFilter(e.target.dataset.f);
+});
+
+/* ── 모달 데이터 ── */
+const PROJECTS=[
+{
+cat:'퍼포먼스 마케팅', title:'이커머스 ROAS 200% 달성',
+challenge:'기존 광고 캠페인의 ROAS가 110% 수준에 머물며 수익성이 낮은 상태였습니다. 광고비 대비 실 매출 기여가 불분명했고, 타겟 세분화가 전혀 이루어지지 않고 있었습니다.',
+strategy:'① 히트맵·세션 분석으로 전환 이탈 구간 3곳 식별\n② 구매 의도별 오디언스 세그먼트 5개 분리\n③ A/B 테스트로 소재 4종·랜딩 2종 동시 검증',
+execution:'Meta Ads Manager에서 캠페인 구조를 전면 재설계했습니다. 리타겟팅 예산 비중을 40%로 상향하고, 고관여 키워드 기반의 Google 쇼핑 캠페인을 병행 운영했습니다.',
+result:{before:110,after:200,label:'ROAS (%)'},
+testimonial:{q:'"광고 집행 후 매출이 눈에 띄게 올랐습니다. 데이터 기반으로 빠르게 최적화해 주셔서 신뢰가 갔습니다."',a:'이커머스 클라이언트 A · ○○몰 대표'}
+},
+{
+cat:'SNS 성장', title:'스타트업 인스타그램 4배 성장',
+challenge:'팔로워 2,000명 수준에서 6개월간 성장이 정체된 상태였습니다. 콘텐츠 업로드 주기가 불규칙하고 해시태그 전략 없이 운영 중이었습니다.',
+strategy:'① 타겟 페르소나 2종 재정의 (20대 여성 소비자 / 30대 창업자)\n② 콘텐츠 캘린더 월 16회 고정 발행 계획 수립\n③ 릴스 중심의 숏폼 전환으로 알고리즘 노출 확대',
+execution:'주 4회 릴스, 주 3회 카드뉴스 포맷으로 발행 루틴을 확립했습니다. 협업 계정 5곳과 교차 홍보를 진행하고, 반응률 기반으로 콘텐츠 방향을 격주 조정했습니다.',
+result:{before:2000,after:8000,label:'팔로워 수'},
+testimonial:{q:'"인스타 팔로워가 6개월 만에 4배가 됐어요. 콘텐츠 방향성을 잡아 주신 덕분입니다."',a:'스타트업 클라이언트 B · ○○스타트업 대표'}
+},
+{
+cat:'콘텐츠 마케팅', title:'로컬 브랜드 블로그 6배 성장',
+challenge:'네이버 블로그 월 방문자 500명 수준으로, 검색 유입이 거의 없었습니다. SEO 키워드 전략 없이 제품 소개 위주의 포스팅만 이루어지고 있었습니다.',
+strategy:'① 브랜드 관련 롱테일 키워드 80개 발굴 및 우선순위 매트릭스 작성\n② 정보성 콘텐츠 70% / 브랜드 콘텐츠 30% 비율 전환\n③ 월 12회 발행 · 포스팅당 2,000자 이상 기준 수립',
+execution:'SEO 최적화 포스팅 템플릿을 설계하고, 지역 키워드와 카테고리 키워드를 조합한 글을 월 12개씩 발행했습니다. 3개월 차부터 상위 노출이 시작되며 유입이 급증했습니다.',
+result:{before:500,after:3000,label:'월 방문자 수'},
+testimonial:{q:'"블로그 방문자가 4개월 만에 6배가 됐습니다. 실행력과 결과 모두 만족스러웠습니다."',a:'로컬 브랜드 클라이언트 C · ○○브랜드 운영자'}
+}
+];
+
+let curProject=null, curTab='challenge';
+
+function openModal(idx){
+const p=PROJECTS[idx]; curProject=p; curTab='challenge';
+$('m-cat').textContent=p.cat;
+$('m-title').textContent=p.title;
+renderMTab('challenge');
+document.querySelectorAll('.mtab').forEach(t=>t.classList.toggle('on',t.dataset.t==='challenge'));
+$('m-tq').textContent=p.testimonial.q;
+$('m-ta').textContent=p.testimonial.a;
+$('modal').classList.add('open');
+document.body.style.overflow='hidden';
+}
+function closeModal(){
+$('modal').classList.remove('open');
+document.body.style.overflow='';
+}
+
+function renderMTab(tab){
+const p=curProject; let html='';
+if(tab==='challenge'){
+html=`<div class="mpanel on"><div class="mpanel-title">Challenge</div><div class="mpanel-txt">${p.challenge}</div></div>`;
+} else if(tab==='strategy'){
+const rows=p.strategy.split('\n').map(s=>`<div style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;color:rgba(255,255,255,.75)">${s}</div>`).join('');
+html=`<div class="mpanel on"><div class="mpanel-title">Strategy</div>${rows}</div>`;
+} else if(tab==='execution'){
+html=`<div class="mpanel on"><div class="mpanel-title">Execution</div><div class="mpanel-txt">${p.execution}</div></div>`;
+} else {
+const max=p.result.after;
+const bh=Math.round(p.result.before/max*100);
+const ah=100;
+html=`<div class="mpanel on">
+<div class="mpanel-title">Result — ${p.result.label}</div>
+<div class="chart-wrap">
+<div class="bar-group">
+<div class="bar-val">${p.result.before.toLocaleString()}</div>
+<div class="bar bar-before" style="height:${bh}%"></div>
+<div class="bar-lbl">Before</div>
+</div>
+<div class="bar-group">
+<div class="bar-val" style="color:var(--acc)">${p.result.after.toLocaleString()}</div>
+<div class="bar bar-after" style="height:${ah}%"></div>
+<div class="bar-lbl">After</div>
+</div>
+</div>
+</div>`;
+}
+$('m-content').innerHTML=html;
+}
+
+$('modal-close').addEventListener('click',closeModal);
+$('modal').addEventListener('click',e=>{ if(e.target===$('modal')) closeModal(); });
+document.querySelectorAll('.pcard').forEach(c=>{
+c.addEventListener('click',()=>openModal(+c.dataset.idx));
+});
+$('mtabs').addEventListener('click',e=>{
+if(!e.target.matches('.mtab')) return;
+document.querySelectorAll('.mtab').forEach(t=>t.classList.remove('on'));
+e.target.classList.add('on');
+renderMTab(e.target.dataset.t);
+});
+
+/* ── 스킬 바 애니메이션 (Intersection Observer) ── */
+const skillObs=new IntersectionObserver(entries=>{
+if(!entries[0].isIntersecting) return;
+[0,1,2].forEach(i=>{
+const fill=$(`sf${i}`), pct=$(`sp${i}`);
+const w=+fill.dataset.w;
+setTimeout(()=>{
+fill.style.width=w+'%';
+let v=0;
+const t=setInterval(()=>{
+v+=2; if(v>=w){ v=w; clearInterval(t); }
+pct.textContent=v+'%';
+},20);
+},i*150);
+});
+skillObs.disconnect();
+},{threshold:.3});
+skillObs.observe(document.querySelector('#section-skills'));
+
+/* ── ESC 키로 모달 닫기 ── */
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeModal(); });
+</script>
+</body>
+</html>
+
