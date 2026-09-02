@@ -4,7 +4,7 @@
 
 강의 「Vibe Coding for DSMP」 2장 실습 산출물임. 클로드 아티팩트에서 PRD를 작성하고, 그 PRD를 기반으로 웹페이지를 구현한 과정 전체가 강의 노트에 정리되어 있음.
 
-게시된 페이지: <https://logistex.github.io/marketerPortpolio/>
+게시된 페이지: <https://logistex.github.io/marketerPortfolio/>
 
 ## 폴더 구성
 
